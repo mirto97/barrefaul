@@ -1,5 +1,18 @@
 {
+    // Analisi dei null basata sulle annotation (@Nullable, @NonNull): si attiva da sola se rileva quelle annotation nel progetto
     "java.compile.nullAnalysis.mode": "automatic",
+
+    // Aggiorna la configurazione del progetto da solo quando cambia il pom.xml, senza chiedere conferma
     "java.configuration.updateBuildConfiguration": "automatic",
-    "java.debug.settings.onBuildFailureProceed": true
+
+    // Se la build ha errori di compilazione il debug non parte, invece di avviare l'app con classi incomplete
+    "java.debug.settings.onBuildFailureProceed": false,
+
+    "editor.codeActionsOnSave": {
+        // Aggiunge/ordina gli import e rimuove quelli inutilizzati, sia al salvataggio manuale sia all'auto save
+        "source.organizeImports": "always"
+    },
+
+    // Salva in automatico quando l'editor perde il focus (cambio file o finestra)
+    "files.autoSave": "onFocusChange",
 }
