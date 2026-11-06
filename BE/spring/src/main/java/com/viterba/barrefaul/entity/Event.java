@@ -5,13 +5,14 @@ import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -44,22 +45,16 @@ public class Event {
     // Ora di inizio selezioni
     private LocalTime selectionsStartTime;
 
-    @ManyToMany
-    @JoinTable(
-        name = "event_judges",
-        joinColumns = @JoinColumn(name = "event_id"),
-        inverseJoinColumns = @JoinColumn(name = "crew_id")
-    )
-    private Set<Crew> judges = new HashSet<>();
+    @ElementCollection
+    @CollectionTable(name = "event_judges", joinColumns = @JoinColumn(name = "event_id"))
+    @Column(name = "alias")
+    private Set<String> judges = new HashSet<>();
 
-    @ManyToMany
-    @JoinTable(
-        name = "event_hosts",
-        joinColumns = @JoinColumn(name = "event_id"),
-        inverseJoinColumns = @JoinColumn(name = "crew_id")
-    )
-    private Set<Crew> hosts = new HashSet<>();
-
+    @ElementCollection
+    @CollectionTable(name = "event_hosts", joinColumns = @JoinColumn(name = "event_id"))
+    @Column(name = "alias")
+    private Set<String> hosts = new HashSet<>();
+    
     /* da aggiungere poi
     private List<?> sponsors;
     private List<Freestyler> tds;

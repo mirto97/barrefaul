@@ -24,9 +24,9 @@ public record EventRequest(
     @NotBlank
     String location,
 
-    // Id dei membri, risolti nel service
-    Set<Long> judgeIds,
-    Set<Long> hostIds
+    // Alias come testo, nessun legame con Crew
+    Set<@NotBlank String> judges,
+    Set<@NotBlank String> hosts
 
 ) {
     

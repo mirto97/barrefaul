@@ -12,8 +12,8 @@ public record EventResponse(
     LocalTime advertisedStartTime,
     LocalTime selectionsStartTime,
     String location,
-    Set<CrewSummary> judges,
-    Set<CrewSummary> hosts
+    Set<String> judges,
+    Set<String> hosts
 
 ) {
     

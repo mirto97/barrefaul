@@ -19,6 +19,7 @@ import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderColumn;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -44,9 +45,9 @@ public class Crew {
     // così il massimo caratteri è 255, andrà cambiato
     private String bio = "";
 
-    // Però senza @OrderColumn l’ordine non viene salvato. Se servisse un ordine di visualizzazione dei link, lo aggiungiamo.
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "crew_id", nullable = false)
+    @OrderColumn(name = "display_order")
     private List<Social> socials = new ArrayList<>();
 
     @ElementCollection
