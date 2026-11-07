@@ -1,5 +1,6 @@
 package com.viterba.barrefaul.repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,6 +17,6 @@ public interface FreestylerRepository extends JpaRepository<Freestyler, Long> {
     
     // Numero di punteggi distinti più alti di quello dato: la posizione è il risultato + 1
     @Query("select count(distinct f.score) from Freestyler f where f.score > :score")
-    long countDistinctScoresGreaterThan(@Param("score") int score);
+    long countDistinctScoresGreaterThan(@Param("score") BigDecimal score);
 
 }

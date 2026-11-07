@@ -21,11 +21,7 @@ public record FreestylerRequest(
 
     Set<Role> roles,
 
-    List<@Valid SocialRequest> socials,
-
-    int score,
-
-    int participations
+    List<@Valid SocialRequest> socials
 
 ) {
     

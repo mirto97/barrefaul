@@ -14,6 +14,15 @@ import com.viterba.barrefaul.entity.Freestyler;
 public interface FreestylerMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "score", ignore = true)
+    @Mapping(target = "participations", ignore = true)
+    @Mapping(target = "firstPlaces", ignore = true)
+    @Mapping(target = "secondPlaces", ignore = true)
+    @Mapping(target = "semifinals", ignore = true)
+    @Mapping(target = "quarterfinals", ignore = true)
+    @Mapping(target = "roundOf16", ignore = true)
+    @Mapping(target = "selections", ignore = true)
+    @Mapping(target = "jury", ignore = true)
     Freestyler toEntity(FreestylerRequest request);
 
     // Il ranking non è nell'entity: è calcolato dal service e passato qui
@@ -23,6 +32,15 @@ public interface FreestylerMapper {
     // I socials non si mappano qui: il merge per id è nel SocialMerger
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "socials", ignore = true)
+    @Mapping(target = "score", ignore = true)
+    @Mapping(target = "participations", ignore = true)
+    @Mapping(target = "firstPlaces", ignore = true)
+    @Mapping(target = "secondPlaces", ignore = true)
+    @Mapping(target = "semifinals", ignore = true)
+    @Mapping(target = "quarterfinals", ignore = true)
+    @Mapping(target = "roundOf16", ignore = true)
+    @Mapping(target = "selections", ignore = true)
+    @Mapping(target = "jury", ignore = true)
     @Mapping(target = "roles", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateEntity(FreestylerRequest request, @MappingTarget Freestyler freestyler);
 

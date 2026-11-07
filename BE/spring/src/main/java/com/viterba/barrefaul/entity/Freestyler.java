@@ -1,5 +1,7 @@
 package com.viterba.barrefaul.entity;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,22 +14,23 @@ public class Freestyler extends Crew {
 
     // Posizione in classifica
     // private Integer ranking; mo lo calcolo
-    // TODO inserire media ponderata ecc...
 
-    // Punteggio attuale
-    private int score = 0;
+    // punteggio attuale
+    private BigDecimal score = BigDecimal.ZERO;
 
-    // partecipazioni (iniziamo totale, ma vorrei farla annuale) - La versione annuale non sarà più un singolo contatore, ma un conteggio per anno (probabilmente una tabella a parte)
+    // partecipazioni
     private int participations = 0;
 
-    /* meglio introdurlo più avanti, ci semplifichiamo le cose adesso
-    // quante volte si è guadagnato queste posizioni nel torneo settimanale
-    private Integer primoPosto;
-    private Integer secondoPosto;
-    private Integer semifinale;
-    // quarti di finale
-    private Integer quarti;
-    */
+    // Contatori dei piazzamenti
+    private int firstPlaces = 0;
+    private int secondPlaces = 0;
+    private int semifinals = 0;
+    private int quarterfinals = 0;
+    private int roundOf16 = 0;
+    private int selections = 0;
+    private int jury = 0;
+    
+    
 
     // Assegna in automatico il ruolo FREESTYLER
     public Freestyler() {

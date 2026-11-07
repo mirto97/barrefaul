@@ -2,7 +2,6 @@ package com.viterba.barrefaul.service;
 
 import java.util.List;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,11 +23,8 @@ public class EventService {
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
 
-    // Dal più avanti nel tempo al più indietro
-    private static final Sort DEFAULT_SORT = Sort.by(Sort.Direction.DESC, "date");
-
     public List<EventResponse> findAll() {
-        return eventRepository.findAll(DEFAULT_SORT).stream()
+        return eventRepository.findAllByOrderByDateDesc().stream()
                 .map(eventMapper::toResponse)
                 .toList();
     }
