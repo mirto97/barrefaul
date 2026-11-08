@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### ignoro la cartella con le immagini di prova ###
+uploads/

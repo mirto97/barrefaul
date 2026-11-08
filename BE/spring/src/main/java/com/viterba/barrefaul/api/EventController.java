@@ -1,4 +1,4 @@
-package com.viterba.barrefaul.controller;
+package com.viterba.barrefaul.api;
 
 import java.util.List;
 
@@ -13,45 +13,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.viterba.barrefaul.dto.CrewRequest;
-import com.viterba.barrefaul.dto.CrewResponse;
-import com.viterba.barrefaul.service.CrewService;
+import com.viterba.barrefaul.dto.EventRequest;
+import com.viterba.barrefaul.dto.EventResponse;
+import com.viterba.barrefaul.service.EventService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/crew")
+@RequestMapping("/api/events")
 @RequiredArgsConstructor
-public class CrewController {
+public class EventController {
 
-    private final CrewService crewService;
+    private final EventService eventService;
 
+    // Lista ordinata per data, dal più avanti nel tempo al più indietro
     @GetMapping
-    public List<CrewResponse> findAll() {
-        return crewService.findAll();
+    public List<EventResponse> findAll() {
+        return eventService.findAll();
     }
 
     @GetMapping("/{id}")
-    public CrewResponse findById(@PathVariable Long id) {
-        return crewService.findById(id);
+    public EventResponse findById(@PathVariable Long id) {
+        return eventService.findById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CrewResponse create(@Valid @RequestBody CrewRequest request) {
-        return crewService.create(request);
+    public EventResponse create(@Valid @RequestBody EventRequest request) {
+        return eventService.create(request);
     }
 
     @PutMapping("/{id}")
-    public CrewResponse update(@PathVariable Long id, @Valid @RequestBody CrewRequest request) {
-        return crewService.update(id, request);
+    public EventResponse update(@PathVariable Long id, @Valid @RequestBody EventRequest request) {
+        return eventService.update(id, request);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
-        crewService.delete(id);
+        eventService.delete(id);
     }
 
 }

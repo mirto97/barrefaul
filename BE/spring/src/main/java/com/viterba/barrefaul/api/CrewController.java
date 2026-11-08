@@ -1,4 +1,4 @@
-package com.viterba.barrefaul.controller;
+package com.viterba.barrefaul.api;
 
 import java.util.List;
 
