@@ -15,4 +15,12 @@
 
     // Salva in automatico quando l'editor perde il focus (cambio file o finestra)
     "files.autoSave": "onFocusChange",
+    
+    // per togliere il warning di mockito tests
+    "java.test.config": {
+        "vmArgs": [
+            "-javaagent:C:\\Users\\andre\\.m2\\repository\\org\\mockito\\mockito-core\\5.23.0\\mockito-core-5.23.0.jar",
+            "-Xshare:off"
+        ]
+    }
 }

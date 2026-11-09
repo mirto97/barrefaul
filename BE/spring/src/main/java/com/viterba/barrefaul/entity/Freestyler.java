@@ -2,6 +2,7 @@ package com.viterba.barrefaul.entity;
 
 import java.math.BigDecimal;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,7 @@ public class Freestyler extends Crew {
     // private Integer ranking; mo lo calcolo
 
     // punteggio attuale
+    @Column(nullable = false)
     private BigDecimal score = BigDecimal.ZERO;
 
     // partecipazioni

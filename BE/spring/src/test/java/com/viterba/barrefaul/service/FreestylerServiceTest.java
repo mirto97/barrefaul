@@ -180,6 +180,19 @@ class FreestylerServiceTest {
         assertThat(response.roles()).containsExactly(Role.FREESTYLER);
     }
 
+    // Con socials null il mapper non deve lasciare la lista dell'entity a null
+    @Test
+    void create_withNullSocialsHasEmptySocialsOnEntity() {
+        stubSaveReturnsArgument();
+        FreestylerRequest request = new FreestylerRequest("Alfa", null, null, null, null, null);
+
+        freestylerService.create(request);
+
+        ArgumentCaptor<Freestyler> captor = ArgumentCaptor.forClass(Freestyler.class);
+        verify(freestylerRepository).save(captor.capture());
+        assertThat(captor.getValue().getSocials()).isEmpty();
+    }
+
     @Test
     void create_mapsScalarFieldsAndSocialsInOrder() {
         stubSaveReturnsArgument();

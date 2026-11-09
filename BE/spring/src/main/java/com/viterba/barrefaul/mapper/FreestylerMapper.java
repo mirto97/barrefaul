@@ -4,13 +4,18 @@ import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.viterba.barrefaul.dto.FreestylerRequest;
 import com.viterba.barrefaul.dto.FreestylerResponse;
 import com.viterba.barrefaul.entity.Freestyler;
 
-@Mapper(componentModel = "spring", uses = SocialMapper.class, injectionStrategy = InjectionStrategy.CONSTRUCTOR)
+@Mapper(componentModel = "spring", 
+    uses = SocialMapper.class, 
+    injectionStrategy = InjectionStrategy.CONSTRUCTOR,
+    // Una lista null in ingresso diventa vuota, così le collezioni dell'entity non finiscono a null
+    nullValueIterableMappingStrategy = NullValueMappingStrategy.RETURN_DEFAULT)
 public interface FreestylerMapper {
 
     @Mapping(target = "id", ignore = true)
